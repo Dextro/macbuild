@@ -35,7 +35,7 @@ echo "### Installing Ansible roles";
 ansible-galaxy install -r ./requirements.yml;
 
 # Perform the build
-ansible-playbook -i localhost -K main.yml
+ansible-playbook -K main.yml
 
 # reset PIP_REQUIRE_VIRTUALENV
 export PIP_REQUIRE_VIRTUALENV=$virtualenv_required
