@@ -1,6 +1,6 @@
 homebrew_installed_packages:
   - ack
-  - atlassian-plugin-sdk
+  - atlassian-cli
   - awscli
   - bash
   - bash-completion
