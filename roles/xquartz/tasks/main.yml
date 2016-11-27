@@ -1,0 +1,20 @@
+---
+- name: Download XQuartz
+  get_url: >
+    url=http://xquartz.macosforge.org/downloads/SL/XQuartz-{{ xquartz_version }}.dmg
+    dest={{ downloads_directory }}/XQuartz-{{ xquartz_version }}.dmg
+
+- name: Mount XQuartz image
+  command: >
+    chdir={{ downloads_directory }}
+    hdiutil attach XQuartz-{{ xquartz_version }}.dmg
+    creates=/Volumes/XQuartz-{{ xquartz_version }}
+
+- name: Install XQuartz
+  command: >
+    installer -package /Volumes/XQuartz-{{ xquartz_version }}/XQuartz.pkg -target /
+    creates=/Applications/Utilities/XQuartz.app
+  sudo: yes
+
+- name: Unmount XQuartz image
+  command: hdiutil detach /Volumes/XQuartz-{{ xquartz_version }}
