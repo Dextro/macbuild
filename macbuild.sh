@@ -3,14 +3,6 @@
 # Prompt the user for their sudo password
 sudo -v
 
-# Xcode - Command Line Tools
-if type xcode-select >&- && xpath=$( xcode-select --print-path ) &&
-test -d "${xpath}" && test -x "${xpath}" ; then
-  echo "Command Line Tools are already installed."
-else
-  xcode-select --install
-fi
-
 # Enable passwordless sudo for the macbuild run
 sudo sed -i -e "s/^%admin.*/%admin  ALL=(ALL) NOPASSWD: ALL/" /etc/sudoers
 
@@ -18,24 +10,28 @@ sudo sed -i -e "s/^%admin.*/%admin  ALL=(ALL) NOPASSWD: ALL/" /etc/sudoers
 virtualenv_required=$PIP_REQUIRE_VIRTUALENV
 export PIP_REQUIRE_VIRTUALENV=false
 
-# Install pip
+# Install or upgrade pip
 if ! which pip > /dev/null 2>&1
 then
-  echo -n "Installing pip"
+  echo  "### Installing pip"
   sudo easy_install pip
-  echo " - Done"
+else
+  echo  "### Upgrading pip"
+  sudo -H pip install -U pip
 fi
 
-# Install Ansible (using pip is the officially supported way)
+# Install or upgrade Ansible (using pip is the officially supported way)
 if ! pip2 show ansible > /dev/null 2>&1
 then
-  echo -n "Installing Ansible"
-  pip2 install ansible
-  echo " - Done"
+  echo "### Installing Ansible"
+  sudo -H pip2 install ansible
+else
+  echo "### Upgrading Ansible"
+  sudo -H pip2 install --ignore-installed --upgrade ansible
 fi
 
 # Install Ansible roles
-echo "Installing Ansible roles";
+echo "### Installing Ansible roles";
 ansible-galaxy install -r ./requirements.yml;
 
 # Perform the build
@@ -47,4 +43,4 @@ export PIP_REQUIRE_VIRTUALENV=$virtualenv_required
 # Disable passwordless sudo after the macbuild is complete
 sudo sed -i -e "s/^%admin.*/%admin  ALL=(ALL) ALL/" /etc/sudoers
 
-echo "All Done!"
+echo "### All Done!"
