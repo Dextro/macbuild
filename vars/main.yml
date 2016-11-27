@@ -1,53 +1,53 @@
----
-downloads: ~/.ansible-downloads/
-
-configure_sudoers: yes
-
-dotfiles_repo: https://github.com/geerlingguy/dotfiles.git
-dotfiles_repo_accept_hostkey: yes
-dotfiles_repo_local_destination: ~/Dropbox/Development/GitHub/dotfiles
-dotfiles_files:
-  - .bash_profile
-  - .gitconfig
-  - .gitignore
-  - .inputrc
-  - .osx
-  - .vimrc
-
 homebrew_installed_packages:
-  # - ansible # Installed via Pip.
-  - autoconf
+  - ack
+  - atlassian-plugin-sdk
+  - awscli
+  - bash
   - bash-completion
-  - doxygen
+  - composer
+  - coreutils
+  - findutils
   - gettext
   - git
+  - git-flow-avh
   - go
   - gpg
+  - grep
   - hub
+  - htop-osx
   - httpie
-  - iperf
+  - imagemagick
+  - jmeter
+  - keybase
+  - lastpass-cli
   - libdvdcss
-  - libevent
-  - packer
-  - python
-  - sqlite
+  - mariadb
+  - mas
   - mcrypt
-  - mysql
+  - mtr
   - nmap
-  - npm
-  - nvm
+  - node
+  - packer
+  - pcre
   - php70
   - php70-mcrypt
   - php70-xdebug
+  - python
+  - rbenv
+  - reattach-to-user-namespace
+  - ruby
+  - sqlite
   - ssh-copy-id
-  - cowsay
-  - readline
-  - subversion
+  - tmux
+  - tmuxinator-completion
+  - tree
   - openssl
+  - openssl-osx-ca
   - pv
-  - drush
+  - vim
   - wget
-  - wrk
+  - zsh
+
 
 homebrew_taps:
   - homebrew/core
@@ -59,23 +59,17 @@ homebrew_taps:
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
+  - atom
   - docker
   - dropbox
-  - fing
   - firefox
   - google-chrome
   - handbrake
-  - kdiff3
   - licecap
-  - limechat
   - macvim
-  - yujitach-menumeters # Note: Using forked version for 10.11+ support
-  - nvalt
   - sequel-pro
   - skype
-  - skitch
   - slack
-  - sublime-text
   - transmit
   - vagrant
   - virtualbox
