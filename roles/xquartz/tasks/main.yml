@@ -1,7 +1,7 @@
 ---
 - name: Download XQuartz
   get_url: >
-    url=http://xquartz.macosforge.org/downloads/SL/XQuartz-{{ xquartz_version }}.dmg
+    url=https://dl.bintray.com/xquartz/downloads/XQuartz-{{ xquartz_version }}.dmg
     dest={{ downloads_directory }}/XQuartz-{{ xquartz_version }}.dmg
 
 - name: Mount XQuartz image
